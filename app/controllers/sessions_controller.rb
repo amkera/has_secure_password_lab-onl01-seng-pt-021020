@@ -15,17 +15,23 @@ class SessionsController < ApplicationController
 
     return redirect_to(controller: 'sessions', action: 'new') unless user
     
-    #if the user is not valid, they will be redirected to the new action in the sessions controller, rendering the 
+    #if the user is not valid, they will be redirected to the new action in the sessions controller, rendering the login page 
 
     session[:user_id] = user.id
+    #log the user in 
 
     @user = user
+    #set user equal to user instance 
 
     redirect_to controller: 'welcome', action: 'home'
+    #take them to their home page 
   end
 
   def destroy
     session.delete :user_id
+    #log them out by deleting the user_id from the session hash. 
+    #Remember that session hash has a user_id, while db has a user.id 
+    byebug
 
     redirect_to '/'
   end
