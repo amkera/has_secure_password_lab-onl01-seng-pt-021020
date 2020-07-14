@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     #find this user by the name key in the user hash, in the params hash 
     #byebug
     #params: 
-      #
+      #<ActionController::Parameters {"user"=><ActionController::Parameters {"name"=>"Connie", "password"=>"M4heswaran"} permitted: false>, "controller"=>"sessions", "action"=>"create"} permitted: false>
     user = user.try(:authenticate, params[:user][:password])
 
     return redirect_to(controller: 'sessions', action: 'new') unless user
