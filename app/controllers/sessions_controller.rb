@@ -10,8 +10,12 @@ class SessionsController < ApplicationController
       #<ActionController::Parameters {"user"=><ActionController::Parameters {"name"=>"Connie", "password"=>"M4heswaran"} permitted: false>, "controller"=>"sessions", "action"=>"create"} permitted: false>
       
     user = user.try(:authenticate, params[:user][:password])
+    #try to authenticate the user based on their password in the user hash in the params hash 
+    #user.try(:authenticate) will attempt to authenticate the user, else it will return nil 
 
     return redirect_to(controller: 'sessions', action: 'new') unless user
+    
+    #if the user is not valid, they will be redirected to the new action in the sessions controller, rendering the 
 
     session[:user_id] = user.id
 
