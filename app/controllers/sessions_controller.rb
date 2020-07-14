@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(name: params[:user][:name])
     #find this user by the name key in the user hash, in the params hash 
-    byebug
+    #byebug
     user = user.try(:authenticate, params[:user][:password])
 
     return redirect_to(controller: 'sessions', action: 'new') unless user
