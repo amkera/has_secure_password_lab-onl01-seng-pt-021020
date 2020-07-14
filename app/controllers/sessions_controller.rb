@@ -30,8 +30,9 @@ class SessionsController < ApplicationController
   def destroy
     session.delete :user_id
     #log them out by deleting the user_id from the session hash. 
-    #Remember that session hash has a user_id, while db has a user.id 
-    byebug
+    #Remember that session hash has a user_id, while db has a user.id
+    
+    
 
     redirect_to '/'
   end
